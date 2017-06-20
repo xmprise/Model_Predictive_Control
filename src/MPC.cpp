@@ -43,6 +43,40 @@ class FG_eval {
       fg[1 + V_START] = vars[V_START];
       fg[1 + CTE_START] = vars[CTE_START];
       fg[1 + EPSI_START] = vars[EPSI_START];
+
+      // Constraints based on the vehicle mode
+      for(int i = 0; i < N - 1; i++) {
+          // The state at time t
+          AD<double> x0 = vars[X_START + i];
+          AD<double> y0 = vars[Y_START + i];
+          AD<double> psi0 = vars[PSI_START + i];
+          AD<double> v0 = vars[V_START + i];
+          AD<double> cte0 = vars[CTE_START + i];
+          AD<double> epsi0 = vars[EPSI_START + i];
+
+          // The state at time t+1 .
+          AD<double> x1 = vars[X_START + i + 1];
+          AD<double> y1 = vars[Y_START + i + 1];
+          AD<double> psi1 = vars[PSI_START + i + 1];
+          AD<double> v1 = vars[V_START + i + 1];
+          AD<double> cte1 = vars[CTE_START + i + 1];
+          AD<double> epsi1 = vars[EPSI_START + i + 1];
+
+          // Only consider the actuation at time t.
+          AD<double> delta0 = vars[DELTA_START + i];
+          AD<double> a0 = vars[A_START + i];
+
+          AD<double> f0 = coeffs[0] + coeffs[1] * x0;
+          AD<double> psides0 = CppAD::atan(coeffs[1]);
+
+          fg[2 + X_START + i] = x1 - (x0 + v0 * CppAD::cos(psi0) * dt);
+          fg[2 + Y_START + i] = y1 - (y0 + v0 * CppAD::sin(psi0) * dt);
+          fg[2 + PSI_START + i] = psi1 - (psi0 + v0 * (-delta0 / Lf) * dt);
+          fg[2 + V_START + i] = v1 - (v0 + a0 * dt);
+          fg[2 + CTE_START + i] = cte1 - ((f0 - y0) + (v0 * CppAD::sin(epsi0) * dt));
+          fg[2 + EPSI_START + i] = epsi1 - ((psi0 - psides0) + v0 * (-delta0 / Lf) * dt);
+
+      }
   }
 };
 
