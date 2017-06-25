@@ -37,7 +37,7 @@ It estimates the curve of the road ahead. The third order polynomial is known to
   - Steering angle represents the angle of turning the vehicle.
   
 #### `a`
-  - This is the 'throttle' and 'brake' value that indicates the acceleration or deceleration of the vehicle.
+  - This is the 'throttle' and 'brake' value that indicates the acceleration or deceleration of the vehicle.
 
 ### Kinematic Model
 Based on physics, there is a simplified version of how the world works. state variable is updated by the elapsed time dt and updated based on the current state and actuators 'delta' and 'a'.
