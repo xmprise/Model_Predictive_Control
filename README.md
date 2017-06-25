@@ -15,6 +15,7 @@ A simple kinematic model was used. Future improvements can be made using Dynamic
 **According to wikipedia**
 Model predictive controllers rely on dynamic models of the process, most often linear empirical models obtained by system identification. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly. PID and LQR controllers do not have this predictive ability.
 
+![state and actuations](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img_2.png)
 ### State Variables
 
 #### `px` 
@@ -37,10 +38,12 @@ It estimates the curve of the road ahead. The third order polynomial is known to
   
 #### `a`
   - This is the 'throttle' and 'brake' value that indicates the acceleration or deceleration of the vehicle.
-  
 
-![state and actuations](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img_2.png)
-  
+### Kinematic Model
+Based on physics, there is a simplified version of how the world works. state variable is updated by the elapsed time dt and updated based on the current state and actuators 'delta' and 'a'.
+
+![KinematicModel](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img3.png)
+
 ---
 
 ## Dependencies
