@@ -30,6 +30,17 @@ Model predictive controllers rely on dynamic models of the process, most often l
 These values are given by the simulator. In addition, provide 'waypoints' that can be used to fit polynomials.
 It estimates the curve of the road ahead. The third order polynomial is known to be able to estimate most road curves well. The polynomial function is based on the local coordinates of the vehicle.
 
+### Actuations 
+
+#### `delta`
+  - Steering angle represents the angle of turning the vehicle.
+  
+#### `a`
+  - This is the 'throttle' and 'brake' value that indicates the acceleration or deceleration of the vehicle.
+  
+
+![state and actuations](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img_2.png)
+  
 ---
 
 ## Dependencies
