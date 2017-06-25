@@ -5,7 +5,7 @@ This project is the final task of SDC Term2, which implements the MPC using the 
 ![MPC](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img_1.png)
 
 - https://youtu.be/suPJSf6iMJk
-- Trajectory path is displayed in green, and reference polynomial fitting in yellow.
+- MPC predicted trajectory in green, and reference to the vehicle's coordinate in yellow.
 - Tested in Ubuntu 16.04, Intel i7 6700 3.4Ghz
 
 ### Model
@@ -15,9 +15,19 @@ A simple kinematic model was used. Future improvements can be made using Dynamic
 **According to wikipedia**
 Model predictive controllers rely on dynamic models of the process, most often linear empirical models obtained by system identification. The main advantage of MPC is the fact that it allows the current timeslot to be optimized, while keeping future timeslots in account. This is achieved by optimizing a finite time-horizon, but only implementing the current timeslot. MPC has the ability to anticipate future events and can take control actions accordingly. PID and LQR controllers do not have this predictive ability.
 
-
 ### State Variables
 
+#### `px` 
+  - The current location in the x-axis in global map coordinate
+#### `py`
+  - The current location in the y-axis in global map coordinate
+#### `psi`
+  - The current heading of the vehicle
+#### `v`
+  - The current velocity of the vehicle
+
+These values are given by the simulator. In addition, provide 'waypoints' that can be used to fit polynomials.
+It estimates the curve of the road ahead. The third order polynomial is known to be able to estimate most road curves well. The polynomial function is based on the local coordinates of the vehicle.
 ---
 
 ## Dependencies
