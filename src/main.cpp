@@ -102,6 +102,7 @@ int main() {
           double steer_value;
           double throttle_value;
 
+          // convert waypoints to vehicle coordinate
           for(int  i=0; i < ptsx.size(); ++i){
 
               // move to origin and rotate around origin to align with axis
@@ -120,6 +121,9 @@ int main() {
           Eigen::Map<Eigen::VectorXd> ptsy_transform(ptry, 6);
 
           auto coeffs = polyfit(ptsx_transform, ptsy_transform, 3);
+          //std::cout << "ptrx: " << ptrx << std::endl;
+          //std::cout << "ptsx_transform: " << ptsx_transform << std::endl;
+          //std::cout << "coeffs: " << coeffs << std::endl;
           // calculate cte and epsi
           double cte = polyeval(coeffs, 0);
           double epsi = -atan(coeffs[1]);
