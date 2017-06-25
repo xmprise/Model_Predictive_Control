@@ -26,8 +26,10 @@ Model predictive controllers rely on dynamic models of the process, most often l
 #### `v`
   - The current velocity of the vehicle
 
+
 These values are given by the simulator. In addition, provide 'waypoints' that can be used to fit polynomials.
 It estimates the curve of the road ahead. The third order polynomial is known to be able to estimate most road curves well. The polynomial function is based on the local coordinates of the vehicle.
+
 ---
 
 ## Dependencies
