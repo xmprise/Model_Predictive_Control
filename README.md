@@ -81,7 +81,7 @@ for (int i = 0; i < N - 2; i++) {
 }
 ```
 The constraints are based on the kinematic model. The formula is shown below.
-![KinematicModel](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/pic_5.png)
+![KinematicModel](https://github.com/xmprise/Model_Predictive_Control/blob/master/pic/img_5.png)
 
 ###Polynomial Fitting and MPC Preprocessing
 To estimate the road curve, the waypoints are given in any global coordinate system and must be converted to the vehicle coordinate system.
